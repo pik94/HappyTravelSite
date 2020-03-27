@@ -15,14 +15,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          {% for _, departure in departures.items() %}
-            {% if request.path == departure.link %}
+          {% for departure_key, departure in departures.items() %}
+            {% set departure_link = url_for('departure', departure=departure_key) %}
+            {% if request.path == departure_link %}
             {% set active='active' %}
             {% else %}
             {% set active='' %}
             {% endif %}
             <li class="nav-item {{ active }}">
-              <a class="nav-link" href="{{ departure.link }}"> {{ departure.text }} </a>
+              <a class="nav-link" href="{{ departure_link }}"> {{ departure }} </a>
             </li>
           {% endfor %}
         </ul>

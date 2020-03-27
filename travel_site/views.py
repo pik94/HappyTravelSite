@@ -29,12 +29,12 @@ class Departure(View):
                 return redirect(data_storage.departures['msk']['link'],
                                 code=301)
 
-        tours = [tour
-                 for tour in data_storage.tours.values()
-                 if tour['departure'] == departure]
+        tours = {tour_id: tour
+                 for tour_id, tour in data_storage.tours.items()
+                 if tour['departure'] == departure}
 
         return _render_template(self._template_name,
-                                selected_departure=departure,
+                                departure=departure,
                                 tours=tours)
 
 

@@ -11,18 +11,15 @@ app.add_url_rule('/',
                      'index', template_name='index.html'))
 
 # departure page
-# app.add_url_rule('/departure',
-#                  view_func=Departure.as_view(
-#                      'departure', template_name='departure.html'),
-#                  defaults={'departure': None})
+_departure_view = Departure.as_view(
+    'departure', template_name='departure.html')
+app.add_url_rule('/departure', view_func=_departure_view,
+                 defaults={'departure': None})
 app.add_url_rule('/departure/<string:departure>',
-                 view_func=Departure.as_view(
-                     'departure', template_name='departure.html'))
+                 view_func=_departure_view)
 
 # tour page
-# app.add_url_rule('/tour',
-#                  view_func=Tour.as_view(
-#                      'tour', template_name='tour.html'),
-#                  defaults={'tour_number': None})
-app.add_url_rule('/tour/<int:tour_number>', 'tour',
-                 view_func=Tour.as_view('tour', template_name='tour.html'))
+_tour_view = Tour.as_view('tour', template_name='tour.html')
+app.add_url_rule('/tour', view_func=_tour_view,
+                 defaults={'tour_number': None})
+app.add_url_rule('/tour/<int:tour_number>', view_func=_tour_view)
