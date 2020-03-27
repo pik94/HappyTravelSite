@@ -9,10 +9,11 @@ class Index(View):
         self._template_name = template_name
 
     def dispatch_request(self) -> str:
-        tours = sorted([tour for tour in data_storage.tours.values()],
-                       key=lambda item: item['stars'])[:6]
+        tours = sorted(data_storage.tours.items(),
+                       key=lambda item: item[1]['stars'],
+                       reverse=True)[:6]
         return _render_template(self._template_name,
-                                tours=tours,
+                                tours=dict(tours),
                                 subtitle=data_storage.subtitle,
                                 description=data_storage.description)
 

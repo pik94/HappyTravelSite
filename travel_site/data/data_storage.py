@@ -1,5 +1,3 @@
-from typing import Dict, Union
-
 from travel_site.data import raw_data as rd
 
 
