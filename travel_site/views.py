@@ -1,4 +1,4 @@
-from flask import abort, redirect, render_template, request
+from flask import abort, redirect, render_template, request, url_for
 from flask.views import View
 
 from travel_site.data import data_storage
@@ -27,7 +27,7 @@ class Departure(View):
             if departure is not None:
                 abort(404)
             else:
-                return redirect(data_storage.departures['msk']['link'],
+                return redirect(url_for('departure', departure='msk'),
                                 code=301)
 
         tours = {tour_id: tour
@@ -48,7 +48,8 @@ class Tour(View):
             if tour_number is not None:
                 abort(404)
             else:
-                return redirect(data_storage.tours[1]['link'], code=301)
+                return redirect(url_for('tour', tour_number=1),
+                                code=301)
 
         return _render_template(self._template_name,
                                 tour=data_storage.tours[tour_number])
