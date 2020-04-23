@@ -1,12 +1,12 @@
 #### Description
-This project is a second task of the online [course](https://academy.stepik.org/flask)
+This project is the first task of the online [course](https://academy.stepik.org/flask)
 It's a simple web site for looking for hotels for traveling. Now, it's possible 
 to select a departure and see according hotels at this place.
 
 #### Install
 1. Create virtualenv and activate it:
     ```shell script
-    python3.7 -m venv venv && source ./venv/bin/python3
+    python3.7 -m venv venv && source ./venv/bin/activate
     ```
 2. Install required packages:
    ```shell script
